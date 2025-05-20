@@ -18,7 +18,7 @@ public class RegistrationMethods
     public static final int REG_YEAR = 2025;
 
     /**
-     * An example of a method - replace this comment with your own
+     * An example of a method - replace this comment with your
      *
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y

@@ -1,17 +1,17 @@
 #BlueJ package file
-dependency1.from=RegistrationDemo
-dependency1.to=RegistrationMethods
+dependency1.from=RegistrationMethods
+dependency1.to=CarOwner
 dependency1.type=UsesDependency
 dependency2.from=RegistrationDemo
-dependency2.to=CarOwner
+dependency2.to=RegistrationMethods
 dependency2.type=UsesDependency
-dependency3.from=RegistrationMethods
+dependency3.from=RegistrationDemo
 dependency3.to=CarOwner
 dependency3.type=UsesDependency
-editor.fx.0.height=739
-editor.fx.0.width=816
-editor.fx.0.x=1036
-editor.fx.0.y=189
+editor.fx.0.height=0
+editor.fx.0.width=0
+editor.fx.0.x=0
+editor.fx.0.y=0
 objectbench.height=93
 objectbench.width=760
 package.divider.horizontal=0.6
