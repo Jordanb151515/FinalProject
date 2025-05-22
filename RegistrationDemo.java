@@ -10,7 +10,7 @@
  */
 public class RegistrationDemo
 {
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws Exception{
       int size = 0;
       RegistrationMethods dmv = new RegistrationMethods();
       dmv.setFileNames();
@@ -22,6 +22,6 @@ public class RegistrationDemo
       dmv.printArrayToFile(overdue, "Owners with Expired Registration");
       CarOwner[] almostDue = dmv.flagAlmostDueOwners(ltState);
       dmv.printArrayToFile(almostDue, "Owners with registration expiring in three months or less");
-      System.out.println("The output file is located at: " + dmv.getOutputFile());
+      System.out.println("The output file is located at: " + dmv.getOutputFileName());
     }
 }

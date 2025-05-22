@@ -18,10 +18,8 @@ public class RegistrationMethods
     public static final int REG_YEAR = 2025;
 
     /**
-     * An example of a method - replace this comment with your
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * Method asks user for name of input file and tests to see if it exists.
+     * Also asks for name of output file.
      */
     public void setFileNames()
     {
@@ -41,10 +39,9 @@ public class RegistrationMethods
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * Method counts the number of lines in the file to determine array size.
      *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * @return    counter   integer array size
      */
     public int getArraySize() throws IOException
     {
@@ -61,10 +58,10 @@ public class RegistrationMethods
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * Method splits each line into parts and uses the information to create
+     * a CarOwner object and add that to a new array. 
      *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * @param  inArray  the empty array that the objects are being added to
      */
     public void processTextToArray(CarOwner[] inArray) throws IOException
     {
@@ -85,10 +82,10 @@ public class RegistrationMethods
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * Method prints out the items of the array of Car Owners to the output file.
      *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * @param  inArray  the array of CarOwner objects
+     * @param  inMsg    header for the car owner information
      */
     public void printArrayToFile(CarOwner[] inArray,String inMsg) throws IOException
     {
@@ -98,13 +95,15 @@ public class RegistrationMethods
         for(CarOwner item:inArray)
             output.println(item);
         output.println();
+        output.close();
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * Method uses object registration dates to see which owners have expired
+     * registrations and adds them to a new array.
      *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * @param   inArray  the array of all car owners
+     * @return  overDue  the array of only overdue car owners
      */
     public CarOwner[] flagOverdueOwners(CarOwner[] inArray) throws IOException
     {
@@ -113,12 +112,12 @@ public class RegistrationMethods
         int counter = 0;
         int index = 0;
         for(int i = 0; i < inArray.length; i++){
-            if(monthsTotal - (inArray[i].getYear*12+inArray[i].getMonth())>12)
+            if(monthsTotal - (inArray[i].getYear()*12+inArray[i].getMonth())>12)
                 counter++;
         }
         overDue = new CarOwner[counter];
         for(int i = 0; i < inArray.length; i++){
-            if(monthsTotal - (inArray[i].getYear*12+inArray[i].getMonth())>12){
+            if(monthsTotal - (inArray[i].getYear()*12+inArray[i].getMonth())>12){
                 overDue[index] = inArray[i];
                 index++;
             }
@@ -127,10 +126,11 @@ public class RegistrationMethods
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * Method uses object registration dates to see which owners have almost 
+     * expired registrations and adds them to a new array.
      *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * @param   inArray  the array of all car owners
+     * @return  almostDue  the array of only almost overdue car owners
      */
     public CarOwner[] flagAlmostDueOwners(CarOwner[] inArray) throws IOException
     {
@@ -139,18 +139,28 @@ public class RegistrationMethods
         int counter = 0;
         int index = 0;
         for(int i = 0; i < inArray.length; i++){
-            if(monthsTotal - (inArray[i].getYear*12+inArray[i].getMonth())>9 &&
-            monthsTotal - (inArray[i].getYear*12+inArray[i].getMonth())<=12)
+            if(monthsTotal - (inArray[i].getYear()*12+inArray[i].getMonth())>9 &&
+            monthsTotal - (inArray[i].getYear()*12+inArray[i].getMonth())<=12)
                 counter++;
         }
         almostDue = new CarOwner[counter];
         for(int i = 0; i < inArray.length; i++){
-            if(monthsTotal - (inArray[i].getYear*12+inArray[i].getMonth())>9 &&
-            monthsTotal - (inArray[i].getYear*12+inArray[i].getMonth())<=12){
+            if(monthsTotal - (inArray[i].getYear()*12+inArray[i].getMonth())>9 &&
+            monthsTotal - (inArray[i].getYear()*12+inArray[i].getMonth())<=12){
                 almostDue[index] = inArray[i];
                 index++;
             }
         }
         return almostDue;
+    }
+    
+    /**
+     * Method is a getter for the name of the output file.
+     *
+     * @return   outputFileName
+     */
+    public String getOutputFileName() 
+    {
+        return outputFileName;
     }
 }
